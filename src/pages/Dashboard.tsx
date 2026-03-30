@@ -5,6 +5,7 @@ import { useFilteredCandidates, DEFAULT_FILTERS, type Filters } from '../hooks/u
 import AddCandidateForm from '../components/AddCandidateForm'
 import CandidateList from '../components/CandidateList'
 import FilterBar from '../components/FilterBar'
+import AnalyticsPanel from '../components/AnalyticsPanel'
 
 export default function Dashboard() {
   const { candidates, loading, updateStatus, deleteCandidate } = useCandidates()
@@ -32,6 +33,7 @@ export default function Dashboard() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-8">
+        <AnalyticsPanel />
         <AddCandidateForm />
 
         {/* FilterBar nằm giữa form và danh sách */}
