@@ -7,6 +7,7 @@ import CandidateList from '../components/CandidateList'
 import FilterBar from '../components/FilterBar'
 import LoadMoreButton from '../components/LoadMoreButton'
 import AnalyticsPanel from '../components/AnalyticsPanel'
+import RecommendPanel from '../components/RecommendPanel'
 
 export default function Dashboard() {
   const {
@@ -46,6 +47,7 @@ export default function Dashboard() {
 
       <main className="max-w-6xl mx-auto px-6 py-8">
         <AnalyticsPanel />
+        <RecommendPanel />
         <AddCandidateForm />
         <FilterBar
           filters={filters}
