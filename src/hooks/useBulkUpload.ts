@@ -9,8 +9,10 @@ export type CandidateEntry = {
   position: string
   status: 'New' | 'Interviewing' | 'Hired' | 'Rejected'
   file: File
+  skills: string[]   
   uploadStatus: UploadStatus
   error?: string
+  matchingScore?: number   
 }
 
 /**
@@ -114,6 +116,7 @@ export function useBulkUpload() {
             applied_position: entry.position.trim(),
             status: entry.status,
             resume_url: urlData.publicUrl,
+            skills: entry.skills ?? [],
           }),
         },
       )
@@ -121,7 +124,7 @@ export function useBulkUpload() {
       const result = await response.json()
       if (!response.ok) throw new Error(result.error || 'Có lỗi xảy ra.')
 
-      patchEntry(entry.id, { uploadStatus: 'done' })
+      patchEntry(entry.id, { uploadStatus: 'done', matchingScore: result.matchingScore ?? 0, })
     },
     [patchEntry],
   )

@@ -12,6 +12,8 @@ export type Candidate = {
   full_name: string
   applied_position: string
   status: 'New' | 'Interviewing' | 'Hired' | 'Rejected'
+  skills: string[]           
+  matching_score: number 
   resume_url: string
   created_at: string
 }

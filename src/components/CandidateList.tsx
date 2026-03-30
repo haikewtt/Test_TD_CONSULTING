@@ -38,6 +38,7 @@ export default function CandidateList({ candidates, loading, onUpdateStatus, onD
             <th className="text-left px-4 py-3 font-medium text-gray-600">Họ tên</th>
             <th className="text-left px-4 py-3 font-medium text-gray-600">Vị trí</th>
             <th className="text-left px-4 py-3 font-medium text-gray-600">Trạng thái</th>
+            <th className="text-left px-4 py-3 font-medium text-gray-600">Score</th>
             <th className="text-left px-4 py-3 font-medium text-gray-600">CV</th>
             <th className="text-left px-4 py-3 font-medium text-gray-600">Ngày nộp</th>
             <th className="text-left px-4 py-3 font-medium text-gray-600">Hành động</th>
@@ -56,6 +57,29 @@ export default function CandidateList({ candidates, loading, onUpdateStatus, onD
                 <span className={`px-2.5 py-1 rounded-full text-xs font-medium ${STATUS_STYLE[c.status]}`}>
                   {c.status}
                 </span>
+              </td>
+              <td className="px-4 py-3">
+                {c.matching_score > 0 ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-16 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full ${
+                          c.matching_score >= 70 ? 'bg-green-500' :
+                          c.matching_score >= 40 ? 'bg-yellow-500' : 'bg-red-400'
+                        }`}
+                        style={{ width: `${c.matching_score}%` }}
+                      />
+                    </div>
+                    <span className={`text-xs font-medium ${
+                      c.matching_score >= 70 ? 'text-green-600' :
+                      c.matching_score >= 40 ? 'text-yellow-600' : 'text-red-500'
+                    }`}>
+                      {c.matching_score}%
+                    </span>
+                  </div>
+                ) : (
+                  <span className="text-xs text-gray-400">—</span>
+                )}
               </td>
               <td className="px-4 py-3">
                 <a
